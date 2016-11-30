@@ -12,6 +12,7 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
 class PE33PerfMedium extends SimulationWithScenario {
+	val concurrentScn = null
 
 //	val httpProtocol = http
 //		.baseURL("https://puppetserver-perf-sut54.delivery.puppetlabs.net:8140")

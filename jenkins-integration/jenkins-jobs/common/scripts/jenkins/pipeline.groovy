@@ -86,7 +86,7 @@ def get_oss_server_era(oss_version) {
     // TODO: eventually we will probably want to do something more sophisticated
     //  here; currently only support 'latest'/'master'/'stable' OSS puppetserver,
     //  and 'latest' agent
-    if (["latest", "master", "stable"].contains(oss_version)) {
+    if (["latest", "master", "stable","pcp"].contains(oss_version)) {
         return [type: "oss",
                 service_name: "puppetserver",
                 version: oss_version,

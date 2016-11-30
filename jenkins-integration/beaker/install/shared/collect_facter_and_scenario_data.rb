@@ -34,7 +34,6 @@ def get_data_hash_from_structured_facts(data)
       'processor0' => facts_data['processors']['models'][0],
       'processorcount' => facts_data['processors']['count'],
       'puppetversion' => facts_data['puppetversion'],
-      'blockdevice_sda_size' => facts_data['disks']['sda']['size'],
       'memorysize' => facts_data['memory']['system']['total']
   }
 end
@@ -45,7 +44,6 @@ def get_data_hash_from_legacy_facts(data)
       'processor0' => facts_data['processor0'],
       'processorcount' => facts_data['processorcount'],
       'puppetversion' => facts_data['puppetversion'],
-      'blockdevice_sda_size' => facts_data['blockdevice_sda_size'],
       'memorysize' => facts_data['memorysize']
   }
 end

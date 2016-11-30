@@ -58,8 +58,8 @@ class DSLHelper {
 // accomplish the same by simply modifying the values in the Jenkins gui
 // on the 'configuration' screen for the seed job.
 
-def git_repo = 'https://github.com/puppetlabs/gatling-puppet-load-test.git'
-def git_branch = 'master'
+def git_repo = 'https://github.com/MikaelSmith/gatling-puppet-load-test.git'
+def git_branch = 'pcp'
 
 String relativize(File root_dir, File f) {
     Paths.get(root_dir.absolutePath).relativize(Paths.get(f.absolutePath))

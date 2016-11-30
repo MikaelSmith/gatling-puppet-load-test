@@ -11,6 +11,7 @@ import org.joda.time.LocalDateTime
 import org.joda.time.format.ISODateTimeFormat
 
 class FOSS375CatalogZero extends SimulationWithScenario {
+	val concurrentScn = null
 
 	val httpProtocol = http
 		.baseURL("https://puppets-macbook-pro-3.local:8140")

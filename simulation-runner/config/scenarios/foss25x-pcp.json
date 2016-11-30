@@ -1,12 +1,12 @@
 {
-    "run_description": "'medium' role from perf control repo",
+    "run_description": "'pcp' role from perf control repo",
     "nodes": [
         {
-            "node_config": "FOSS25xPerfMedium.json",
+            "node_config": "FOSS25xPerfPCP.json",
             "num_instances": 100,
             "ramp_up_duration_seconds": 300,
             "num_repetitions": 1,
-            "sleep_duration_seconds": 1
+            "sleep_duration_seconds": 0
         }
     ]
 }

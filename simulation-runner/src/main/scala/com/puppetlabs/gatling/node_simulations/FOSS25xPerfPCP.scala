@@ -10,8 +10,9 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 // import io.gatling.jdbc.Predef._
 
-class FOSS25xPerfMedium extends SimulationWithScenario {
-	val concurrentScn = null
+import com.puppetlabs.gatling.pcp
+
+class FOSS25xPerfPCP extends SimulationWithScenario {
 
 // 	val httpProtocol = http
 // 		.baseURL("https://puppetserver-perf-sut54.delivery.puppetlabs.net:8140")
@@ -499,8 +500,28 @@ val chain_1 = exec(http("filemeta")
 			.headers(headers_127)
 			.body(reportBody))
 
-					
-	val scn = scenario("FOSS25xPerfMedium").exec(
+	val scn = scenario("FOSS25xPerfPCP").exec(
 		chain_0, chain_1)
+
+	// Generate a unique client type for each user.
+	var count = 0
+	def counter(): Int = { count += 1; count }
+	// Hard-coded, will be unnecessary after more changes to broker.
+	val feeder = Iterator.continually(Map("bytes" -> (pcp.associate_request("pcp://pcp-broker.localdomain/"+counter()))))
+
+	val concurrentScn = scenario("FOSS25xPerfPCP WS")
+		.feed(feeder)
+		.group((session) => "FOSS25xPerfPCP") {
+			exec(ws("connect ws").open("/pcp"))
+			.exec(
+				ws("associate").sendBytes("${bytes}")
+				// Checks don't work with binary messages. This may be fixed in Gatling 3.
+				// We also plan to switch to text-based messages. Punt for now.
+				//.check(wsAwait.within(10).until(1))
+				)
+			// Leave all connections open until the end.
+			//.exec(ws("Close WS").close)
+		}
+
 // setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
 }

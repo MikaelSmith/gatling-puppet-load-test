@@ -11,6 +11,7 @@ import org.joda.time.format.ISODateTimeFormat
 import java.util.UUID
 
 class PE38_CatalogZero extends SimulationWithScenario {
+	val concurrentScn = null
 
 //	val httpProtocol = http
 //		.baseURL("https://jb-centos7:8140")

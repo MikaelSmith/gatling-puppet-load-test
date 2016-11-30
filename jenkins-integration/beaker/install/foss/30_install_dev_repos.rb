@@ -50,7 +50,7 @@ end
 
 step "Setup Puppet Server repositories." do
   package_build_version = ENV['PACKAGE_BUILD_VERSION']
-  if ["latest","stable","master"].include?(package_build_version)
+  if ["latest","stable","master","pcp"].include?(package_build_version)
     package_build_version = get_latest_master_version(package_build_version)
   end
   if package_build_version

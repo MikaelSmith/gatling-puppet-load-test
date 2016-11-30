@@ -5,10 +5,10 @@ node {
 
 pipeline.single_pipeline([
         job_name: 'singletest',
-        gatling_simulation_config: '../simulation-runner/config/scenarios/foss25x-medium-3.json',
+        gatling_simulation_config: '../simulation-runner/config/scenarios/foss25x-pcp.json',
         server_version: [
                 type: "oss",
-                version: "master"
+                version: "pcp"
         ],
         code_deploy: [
                 type: "r10k",

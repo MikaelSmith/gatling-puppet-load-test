@@ -78,6 +78,7 @@ class ConfigDrivenSimulation extends Simulation {
 
   val httpProtocol = http
     .baseURL(config.baseUrl)
+    .wsBaseURL("wss"+config.baseUrl.substring(5)).wsReconnect
 
   val scns = config.nodes.map(node => {
 
@@ -109,6 +110,15 @@ class ConfigDrivenSimulation extends Simulation {
       .protocols(httpProtocol)
   })
 
-  setUp(scns)
+  val concurrentScns = config.nodes.filter(node => {
+    val sim: SimulationWithScenario = node.simulationClass.newInstance
+    sim.concurrentScn != null
+  }).map(node => {
+    import node._
+    val sim: SimulationWithScenario = simulationClass.newInstance
+    sim.concurrentScn.inject(rampUsers(numInstances) over rampUpDuration).protocols(httpProtocol)
+  })
+
+  setUp(scns++concurrentScns)
 //  scns.foreach(setUp(_))
 }

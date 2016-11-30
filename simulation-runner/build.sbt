@@ -1,13 +1,18 @@
+seq(clojure.settings :_*)
+
 name := "gatling-puppet-load-test"
 
 version := "0.1.1-SNAPSHOT"
 
-scalaVersion := "2.11.5"
+scalaVersion := "2.11.8"
 
 net.virtualvoid.sbt.graph.Plugin.graphSettings
 
-libraryDependencies += "io.gatling" % "gatling-app" % "2.1.4"
+resolvers += "clojars" at "https://clojars.org/repo"
+libraryDependencies += "org.clojure" % "clojure" % "1.6.0"
+libraryDependencies += "puppetlabs" % "pcp-client" % "0.3.4"
 
+libraryDependencies += "io.gatling" % "gatling-app" % "2.1.4"
 libraryDependencies += "io.gatling.highcharts" % "gatling-charts-highcharts" % "2.1.4" exclude("io.gatling", "gatling-recorder")
 
 libraryDependencies += "joda-time" % "joda-time" % "2.7"

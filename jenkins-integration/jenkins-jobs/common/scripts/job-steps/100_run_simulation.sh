@@ -41,7 +41,7 @@ cat "${PUPPET_GATLING_SIMULATION_CONFIG}"
 
 set -x
 
-PUPPET_GATLING_MASTER_BASE_URL=https://$SUT_HOST:8140 sbt run
+PUPPET_GATLING_MASTER_BASE_URL=https://$SUT_HOST:8140 SBT_OPTS="-Xss1G" sbt run
 # without this set +x, rvm will log 10 gigs of garbage
 set +x
 popd
