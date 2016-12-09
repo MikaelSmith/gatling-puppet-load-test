@@ -116,7 +116,7 @@ class ConfigDrivenSimulation extends Simulation {
   }).map(node => {
     import node._
     val sim: SimulationWithScenario = simulationClass.newInstance
-    sim.concurrentScn.inject(rampUsers(numInstances) over rampUpDuration).protocols(httpProtocol)
+    sim.concurrentScn.inject(atOnceUsers(numInstances*10)).protocols(httpProtocol)
   })
 
   setUp(scns++concurrentScns)
