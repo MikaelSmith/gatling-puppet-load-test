@@ -511,7 +511,7 @@ val chain_1 = exec(http("filemeta")
 
 	val concurrentScn = scenario("FOSS25xPerfPCP WS")
 		.feed(feeder)
-		.group((session) => "FOSS25xPerfPCP") {
+		.group((session) => "FOSS25xPerfPCP WS") {
 			exec(ws("connect ws").open("/pcp"))
 			.exec(
 				ws("associate").sendBytes("${bytes}")
