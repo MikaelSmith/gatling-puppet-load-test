@@ -3,7 +3,7 @@
     "nodes": [
         {
             "node_config": "FOSS25xPerfMedium.json",
-            "num_instances": 100,
+            "num_instances": 150,
             "ramp_up_duration_seconds": 300,
             "num_repetitions": 1,
             "sleep_duration_seconds": 0

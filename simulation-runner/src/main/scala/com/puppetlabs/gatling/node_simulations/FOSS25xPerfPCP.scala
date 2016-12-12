@@ -519,6 +519,10 @@ val chain_1 = exec(http("filemeta")
 				// We also plan to switch to text-based messages. Punt for now.
 				//.check(wsAwait.within(10).until(1))
 				)
+			.repeat(27) {
+				pause(15 seconds)
+				.exec(ws("ping").sendText("1"))
+			}
 			// Leave all connections open until the end.
 			//.exec(ws("Close WS").close)
 		}
