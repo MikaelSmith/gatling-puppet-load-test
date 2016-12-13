@@ -15,7 +15,4 @@ import io.gatling.core.structure.ScenarioBuilder
  */
 abstract class SimulationWithScenario extends Simulation {
   val scn: ScenarioBuilder
-  // Allows providing a concurrent scenario to run
-  // alongside the recording.
-  val concurrentScn: ScenarioBuilder
 }

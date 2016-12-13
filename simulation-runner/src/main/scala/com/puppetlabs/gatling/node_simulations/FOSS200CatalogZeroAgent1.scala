@@ -11,7 +11,6 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
 class FOSS200CatalogZeroAgent1 extends SimulationWithScenario {
-	val concurrentScn = null
 
 	// val httpProtocol = http
 	// 	.baseURL("https://gatling-master:8140")

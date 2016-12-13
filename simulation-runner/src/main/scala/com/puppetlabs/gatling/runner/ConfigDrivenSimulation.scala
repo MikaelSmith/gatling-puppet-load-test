@@ -110,15 +110,6 @@ class ConfigDrivenSimulation extends Simulation {
       .protocols(httpProtocol)
   })
 
-  val concurrentScns = config.nodes.filter(node => {
-    val sim: SimulationWithScenario = node.simulationClass.newInstance
-    sim.concurrentScn != null
-  }).map(node => {
-    import node._
-    val sim: SimulationWithScenario = simulationClass.newInstance
-    sim.concurrentScn.inject(atOnceUsers(numInstances*10)).protocols(httpProtocol)
-  })
-
-  setUp(scns++concurrentScns)
+  setUp(scns)
 //  scns.foreach(setUp(_))
 }

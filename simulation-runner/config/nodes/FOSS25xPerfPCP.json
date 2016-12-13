@@ -1,7 +1,5 @@
 {
   "simulation_class": "com.puppetlabs.gatling.node_simulations.FOSS25xPerfPCP",
-  "certname_prefix": "pgtomcat",
-  "classes": [
-    "role::by_size::medium"
-  ]
+  "certname_prefix": "pcpfoo",
+  "classes": []
 }

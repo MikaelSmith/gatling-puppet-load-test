@@ -11,7 +11,6 @@ import io.gatling.http.Predef._
 // import io.gatling.jdbc.Predef._
 
 class PEBurnsideRecursiveLargeFilesStaticCatalog extends SimulationWithScenario {
-	val concurrentScn = null
 
 // 	val httpProtocol = http
 // 		.baseURL("https://${node}:8140")

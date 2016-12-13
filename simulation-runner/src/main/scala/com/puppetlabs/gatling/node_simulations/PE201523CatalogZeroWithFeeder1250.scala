@@ -11,7 +11,6 @@ import org.joda.time.format.ISODateTimeFormat
 import java.util.UUID
 
 class PE201523CatalogZeroWithFeeder1250 extends SimulationWithScenario {
-	val concurrentScn = null
 
   val nodeNames = csv("nodes.1250.csv").circular
 

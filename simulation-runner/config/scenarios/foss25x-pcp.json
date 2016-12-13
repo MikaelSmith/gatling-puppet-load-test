@@ -2,9 +2,16 @@
     "run_description": "'pcp' role from perf control repo",
     "nodes": [
         {
-            "node_config": "FOSS25xPerfPCP.json",
+            "node_config": "FOSS25xPerfMedium.json",
             "num_instances": 150,
             "ramp_up_duration_seconds": 300,
+            "num_repetitions": 1,
+            "sleep_duration_seconds": 0
+        },
+        {
+            "node_config": "FOSS25xPerfPCP.json",
+            "num_instances": 150,
+            "ramp_up_duration_seconds": 0,
             "num_repetitions": 1,
             "sleep_duration_seconds": 0
         }

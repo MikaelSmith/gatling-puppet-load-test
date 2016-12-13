@@ -11,7 +11,6 @@ import io.gatling.http.Predef._
 // import io.gatling.jdbc.Predef._
 
 class PEBurnsideCatalogZeroLegacyCatalog extends SimulationWithScenario {
-	val concurrentScn = null
 
 // 	val httpProtocol = http
 // 		.baseURL("https://perf-bl16.delivery.puppetlabs.net:8140")

@@ -11,7 +11,6 @@ import org.joda.time.format.ISODateTimeFormat
 import java.util.UUID
 
 class PE201523CatalogZero extends SimulationWithScenario {
-	val concurrentScn = null
 
 //	val httpProtocol = http
 //		.baseURL("https://perf-bl14.delivery.puppetlabs.net:8140")

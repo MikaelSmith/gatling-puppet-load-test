@@ -7,7 +7,6 @@ import org.joda.time.LocalDateTime
 import org.joda.time.format.ISODateTimeFormat
 
 class PE371_CloseWaitRepro extends SimulationWithScenario {
-	val concurrentScn = null
 
 //	val httpProtocol = http
 //		.baseURL("https://ec2-closewait-split-master.localdomain:8140")

@@ -10,7 +10,6 @@ import org.joda.time.LocalDateTime
 import org.joda.time.format.ISODateTimeFormat
 
 class PE372_CatalogZero extends SimulationWithScenario {
-	val concurrentScn = null
 
 //  val httpProtocol = http
 //    .baseURL("https://perf-bl15.delivery.puppetlabs.net:8140")
