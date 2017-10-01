@@ -1,0 +1,46 @@
+node {
+    checkout scm
+    pipeline = load 'jenkins-integration/jenkins-jobs/common/scripts/jenkins/pipeline.groovy'
+}
+
+def base_config() {
+    [server_version: [
+            type: "pe",
+            pe_version: "2017.3",
+            find_latest: true
+     ],
+     code_deploy: [
+             type: "r10k",
+             control_repo: "git@github.com:puppetlabs/puppetlabs-puppetserver_perf_control.git",
+             basedir: "/etc/puppetlabs/code-staging/environments",
+             environments: ["production"],
+             hiera_config_source_file: "/etc/puppetlabs/code-staging/environments/production/root_files/hiera.yaml"
+     ],
+     server_java_args: "-Xms1g -Xmx2g",
+     puppet_settings: [
+             master: [
+                     "environment_timeout": "0",
+                     "static_catalogs": "false"
+             ]
+     ],
+     background_scripts: [
+             "./jenkins-jobs/common/scripts/background/curl-server-metrics-loop.sh"
+     ],
+     archive_sut_files: [
+             "/var/log/puppetlabs/puppetserver/metrics.json"
+     ]
+    ]
+}
+
+catalogs_250 = base_config()
+catalogs_250.put('job_name', 'pe-couch-no-static-timeout-0-250')
+catalogs_250.put('gatling_simulation_config', '../simulation-runner/config/scenarios/pe-couch-medium-no-static-catalogs-250-2-hours.json')
+
+catalogs_500 = base_config()
+catalogs_500.put('job_name', 'pe-couch-no-static-timeout-0-500')
+catalogs_500.put('gatling_simulation_config', '../simulation-runner/config/scenarios/pe-couch-medium-no-static-catalogs-500-2-hours.json')
+
+pipeline.multipass_pipeline([
+    catalogs_250,
+    catalogs_500,
+])
